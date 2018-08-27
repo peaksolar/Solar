@@ -78,15 +78,7 @@ TOKEN_STATE = (
 
 
 
-class Tokens(models.Model):
-    tokenID = models.AutoField(primary_key=True)
-    tokenNumber = models.CharField(max_length=15)
-    payGID = models.ForeignKey('Product', on_delete=models.CASCADE, )
-    validity = models.IntegerField(default=30)
-    status = models.CharField(max_length=6, choices=TOKEN_STATE, default='new')
 
-    def __str__(self):
-        return self.tokenNumber
 
 PAYMENT_TYPES = (
     ('cash','CASH'),
@@ -99,46 +91,66 @@ class Payment(models.Model):
     payGID = models.ForeignKey('Product', on_delete=models.CASCADE, )
     paymentType = models.CharField(max_length=20, choices=PAYMENT_TYPES, default='cash')
 
-TOKEN_SEQUENCE = [
+TOKEN_SEQUENCE = {
     ('Token1', 'Token 1'),
-    ('Token2', 'Token 1'),
-    ('Token3', 'Token 1'),
-    ('Token4', 'Token 1'),
-    ('Token5', 'Token 1'),
-    ('Token6', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
-    ('Token1', 'Token 1'),
+    ('Token2', 'Token 2'),
+    ('Token3', 'Token 3'),
+    ('Token4', 'Token 4'),
+    ('Token5', 'Token 5'),
+    ('Token6', 'Token 6'),
+    ('Token7', 'Token 7'),
+    ('Token8', 'Token 8'),
+    ('Token9', 'Token 9'),
+    ('Token10', 'Token 10'),
+    ('Token11', 'Token 11'),
+    ('Token12', 'Token 12'),
+    ('Token13', 'Token 13'),
+    ('Token14', 'Token 14'),
+    ('Token15', 'Token 15'),
+    ('Token16', 'Token 16'),
+    ('Token17', 'Token 17'),
+    ('Token18', 'Token 18'),
+    ('Token19', 'Token 19'),
+    ('Token20', 'Token 20'),
+    ('Token21', 'Token 21'),
+    ('Token22', 'Token 22'),
+    ('Token23', 'Token 23'),
+    ('Token24', 'Token 24'),
+    ('Token25', 'Token 25'),
+    ('Token26', 'Token 26'),
+    ('Token27', 'Token 27'),
+    ('Token28', 'Token 28'),
+    ('Token29', 'Token 29'),
+    ('Token30', 'Token 30'),
+    ('Token31', 'Token 31'),
+    ('Token32', 'Token 32'),
+    ('Token33', 'Token 33'),
+    ('Token34', 'Token 34'),
+    ('Token35', 'Token 35'),
+    ('Token36', 'Token 36'),
+    ('Token37', 'Token 37'),
+    ('Token38', 'Token 38'),
+    ('Token39', 'Token 39'),
+    ('Token40', 'Token 40'),
+    ('Token41', 'Token 41'),
+    ('Token42', 'Token 42'),
+    ('Token43', 'Token 43'),
+    ('Token44', 'Token 44'),
+    ('Token45', 'Token 45'),
+    ('Token46', 'Token 46'),
+    ('Token47', 'Token 47'),
+    ('Token48', 'Token 48'),
+    ('Unlock', 'Unlock'),
 
-]
+}
+
+class Tokens(models.Model):
+    tokenID = models.AutoField(primary_key=True)
+    tokenNumber = models.CharField(max_length=15)
+    payGID = models.ForeignKey('Product', on_delete=models.CASCADE, )
+    validity = models.IntegerField(default=30)
+    status = models.CharField(max_length=6, choices=TOKEN_STATE, default='new')
+    sequency = models.CharField(max_length=20, choices=TOKEN_SEQUENCE, default='Token1')
+
+    def __str__(self):
+        return u'%s %s' % (self.sequency, self.tokenNumber)

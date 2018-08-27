@@ -26,7 +26,7 @@ class CustomerAdmin(admin.ModelAdmin):
     search_fields = ['first_name']
 
 class TokenAdmin(admin.ModelAdmin):
-    list_display = ('tokenID', 'tokenNumber', 'payGID', 'validity', 'status')
+    list_display = ('sequency', 'tokenID', 'tokenNumber', 'payGID', 'validity', 'status')
     list_filter = ['payGID']
     search_fields = ['payGID']
 

@@ -23,9 +23,11 @@ from django.conf.urls import url, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="homepage"),
+    url(r'^profile.html/$', views.profile, name="profile"),
     url(r'^', include('api.urls'))
 
 ]
 
 admin.site.site_title = "Peak Solar System"
 admin.site.site_header = "Peak Solar System"
+

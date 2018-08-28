@@ -77,9 +77,6 @@ TOKEN_STATE = (
 )
 
 
-
-
-
 PAYMENT_TYPES = (
     ('cash','CASH'),
     ('mobileMoney', 'MOBILE MONEY'),

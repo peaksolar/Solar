@@ -20,7 +20,7 @@ class CreateView(generics.ListCreateAPIView):
         """Save the post data when creating a new bucketlist."""
         serializer.save(owner=self.request.user)
 
-class CreateViewDetails(generics.RetrieveAPIView):
+class CreateViewDetails(generics.RetrieveUpdateDestroyAPIView):
     """This class defines the create behavior of our rest api."""
     queryset = Bucketlist.objects.all()
     serializer_class = BucketlistSerializer

@@ -26,3 +26,6 @@ urlpatterns = [
     url(r'^', include('api.urls'))
 
 ]
+
+admin.site.site_title = "Peak Solar System"
+admin.site.site_header = "Peak Solar System"

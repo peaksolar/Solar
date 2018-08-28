@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = (
     'blat.apps.SuitConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,9 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blat',
     'rest_framework',
+    'rest_framework.authtoken',
     'api',
 
-]
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -125,7 +126,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
-     'DEFAULT_PERMISSION_CLASSES': [
-         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-     ]
- }
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}

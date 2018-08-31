@@ -1,12 +1,12 @@
 from django.contrib import admin
 from blat.models import Blat
-from blat.models import Product
-from blat.models import Customer
-from blat.models import Tokens
-from blat.models import Payment
-from blat.models import PaymentPlan
-from blat.models import ProductCategory
-from blat.models import Supplier
+from .models import Product
+from .models import Customer
+from .models import Tokens
+from .models import Payment
+from .models import PaymentPlan
+from .models import ProductCategory
+from .models import Supplier
 from api.models import Bucketlist
 
 # Register your models here.
@@ -21,8 +21,8 @@ class Products(admin.ModelAdmin):
     search_fields = ['payGID']
 
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'city', 'phone', 'payGID', 'country')
-    list_filter = ['country']
+    list_display = ('first_name', 'last_name', 'city', 'phone', 'payGID', 'country', 'username')
+    list_filter = ['city']
     search_fields = ['first_name']
 
 class TokenAdmin(admin.ModelAdmin):
@@ -31,7 +31,7 @@ class TokenAdmin(admin.ModelAdmin):
     search_fields = ['payGID']
 
 class CustomerPayments(admin.ModelAdmin):
-    list_display = ('customerName', 'payGID', 'paymentDate', 'amount', 'paymentType')
+    list_display = ('customerName', 'payGID', 'paymentDate', 'amount', 'paymentType', 'activation_token')
     list_filter = ['payGID']
     search_fields = ['customerName']
 
@@ -48,7 +48,7 @@ class ProductCatergories(admin.ModelAdmin):
     list_display = ('catergory_name', 'description', 'Quantity')
 
 class BucketListing(admin.ModelAdmin):
-    list_display = ('name', 'date_created', 'date_modified')
+    list_display = ('name', 'date_created', 'date_modified', 'owner')
 
 
 #admin.site.register(Blat, BlatAdmin)

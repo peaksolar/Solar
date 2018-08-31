@@ -1,4 +1,5 @@
 {% load static %}
+{% load render_table from django_tables2 %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,7 +69,7 @@
                             <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
                     </li>
                     <li>
-                        <a class="profile-pic" href="#"> <img src="{% static 'plugins/images/users/varun.jpg' %}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b></a>
+                        <a class="profile-pic" href="#"> <img src="{% static 'plugins/images/users/varun.jpg' %}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"> Ivan </b></a>
                     </li>
                 </ul>
             </div>
@@ -191,74 +192,7 @@
                             <h3 class="box-title">Recent Payments</h3>
                             <div class="table-responsive">
                                 <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>PAYGO ID</th>
-                                            <th>PAYMENT TYPE</th>
-                                            <th>DATE</th>
-                                            <th>AMMOUNT</th>
-                                            <th>TOKEN</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td class="txt-oflo">201702131</td>
-                                            <td>CASH</td>
-                                            <td class="txt-oflo">April 18, 2017</td>
-                                            <td><span class="text-success">300,000</span></td>
-                                            <td><span class="text-success">630939306939</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td class="txt-oflo">201702131</td>
-                                            <td>MOBILE PAY</td>
-                                            <td class="txt-oflo">April 19, 2017</td>
-                                            <td><span class="text-info">$1250</span></td>
-                                            <td><span class="text-success">630939306939</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td class="txt-oflo">201702131</td>
-                                            <td>MOBILE PAY</td>
-                                            <td class="txt-oflo">April 19, 2017</td>
-                                            <td><span class="text-info">$1250</span></td>
-                                            <td><span class="text-success">630939306939</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td class="txt-oflo">201702132</td>
-                                            <td>TAX</td>
-                                            <td class="txt-oflo">April 20, 2017</td>
-                                            <td><span class="text-danger">500,000</span></td>
-                                            <td><span class="text-success">630939306939</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td class="txt-oflo">201702131</td>
-                                            <td>CHEQUE</td>
-                                            <td class="txt-oflo">April 21, 2017</td>
-                                            <td><span class="text-success">100,000</span></td>
-                                            <td><span class="text-success">630939306939</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td class="txt-oflo">201702131</td>
-                                            <td>MOBILE PAY</td>
-                                            <td class="txt-oflo">April 23, 2017</td>
-                                            <td><span class="text-danger">50,000</span></td>
-                                            <td><span class="text-success">630939306939</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td class="txt-oflo">201702131</td>
-                                            <td>MEMBER</td>
-                                            <td class="txt-oflo">April 22, 2017</td>
-                                            <td><span class="text-success">200,000</span></td>
-                                            <td><span class="text-success">630939306939</span></td>
-                                        </tr>
-                                    </tbody>
+                                     {% render_table table %}
                                 </table>
                             </div>
                         </div>

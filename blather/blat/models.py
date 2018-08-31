@@ -66,6 +66,7 @@ class Customer(models.Model):
     phone = models.CharField(max_length=13)
     payGID = models.ForeignKey('Product', on_delete=models.CASCADE,)
     paymentPlan = models.ForeignKey('PaymentPlan', on_delete=models.CASCADE, null = True )
+    username = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 
     def __str__(self):
         return u'%s %s' %(self.first_name, self.last_name)
@@ -75,18 +76,6 @@ TOKEN_STATE = (
     ('active','ACTIVE'),
     ('new', 'NEW'),
 )
-
-
-PAYMENT_TYPES = (
-    ('cash','CASH'),
-    ('mobileMoney', 'MOBILE MONEY'),
-)
-class Payment(models.Model):
-    customerName = models.ForeignKey('Customer', on_delete=models.CASCADE, )
-    paymentDate = models.DateTimeField(auto_now_add=True, blank=True)
-    amount = models.FloatField()
-    payGID = models.ForeignKey('Product', on_delete=models.CASCADE, )
-    paymentType = models.CharField(max_length=20, choices=PAYMENT_TYPES, default='cash')
 
 TOKEN_SEQUENCE = {
     ('Token1', 'Token 1'),
@@ -150,4 +139,17 @@ class Tokens(models.Model):
     sequency = models.CharField(max_length=20, choices=TOKEN_SEQUENCE, default='Token1')
 
     def __str__(self):
-        return u'%s %s' % (self.sequency, self.tokenNumber)
+        return self.tokenNumber
+
+PAYMENT_TYPES = (
+    ('cash','CASH'),
+    ('mobileMoney', 'MOBILE MONEY'),
+)
+class Payment(models.Model):
+    customerName = models.ForeignKey('Customer', on_delete=models.CASCADE, )
+    paymentDate = models.DateTimeField(auto_now_add=True, blank=True)
+    amount = models.FloatField()
+    payGID = models.ForeignKey('Product', on_delete=models.CASCADE, )
+    paymentType = models.CharField(max_length=20, choices=PAYMENT_TYPES, default='cash')
+    username = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    activation_token = models.ForeignKey('Tokens', on_delete=models.CASCADE, )

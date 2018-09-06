@@ -67,6 +67,7 @@ class Customer(models.Model):
     payGID = models.ForeignKey('Product', on_delete=models.CASCADE,)
     paymentPlan = models.ForeignKey('PaymentPlan', on_delete=models.CASCADE, null = True )
     username = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    objects = models.Manager()
 
     def __str__(self):
         return u'%s %s' %(self.first_name, self.last_name)
@@ -145,6 +146,8 @@ PAYMENT_TYPES = (
     ('cash','CASH'),
     ('mobileMoney', 'MOBILE MONEY'),
 )
+
+
 class Payment(models.Model):
     customerName = models.ForeignKey('Customer', on_delete=models.CASCADE, )
     paymentDate = models.DateTimeField(auto_now_add=True, blank=True)
@@ -153,3 +156,4 @@ class Payment(models.Model):
     paymentType = models.CharField(max_length=20, choices=PAYMENT_TYPES, default='cash')
     username = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     activation_token = models.ForeignKey('Tokens', on_delete=models.CASCADE, )
+    objects = models.Manager()

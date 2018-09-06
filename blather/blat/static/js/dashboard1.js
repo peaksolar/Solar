@@ -2,8 +2,8 @@
      "use strict";
      // toat popup js
      $.toast({
-         heading: 'Welcome to Ample admin',
-         text: 'Use the predefined ones, or specify a custom position object.',
+         heading: 'Welcome PeakSolar Customer Dashboard',
+         text: 'Find all you statements and customer info here.',
          position: 'top-right',
          loaderBg: '#fff',
          icon: 'warning',

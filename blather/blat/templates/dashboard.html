@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Peak Dash Board</title>
+</head>
+<body>
+{% block content %}
+{% block title %}Dashboard{% endblock %}
+<h1>Dashboard</h1>
+{% if request.user.is_authenticated %}
+<p>Welcome to your Dashboard.</p>
+{% endif %}
+{% endblock %}
+</body>
+</html>

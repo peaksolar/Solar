@@ -18,16 +18,22 @@ from blat import views
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from blat import urls
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name="homepage"),
-    url(r'^profile.html/$', views.profile, name="profile"),
-    url(r'^', include('api.urls'))
+    #path('', views.home, name="homepage"),
+    #path('',  views.login, name="login"),
+    #url(r'^profile.html/$', views.profile, name="profile"),
+    url(r'^', include('api.urls')),
+    #url(r'', views.user_login, name="login"),
+    #url(r'^$', views.dashboard, name="dashboard"),
+    url(r'', include('blat.urls')),
+
+
 
 ]
-
 admin.site.site_title = "Peak Solar System"
 admin.site.site_header = "Peak Solar System"
 

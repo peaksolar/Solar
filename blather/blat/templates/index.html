@@ -1,5 +1,6 @@
 {% load static %}
 {% load render_table from django_tables2 %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,7 +72,7 @@
                     </li>
                     {% if request.user.is_authenticated %}
                     <li>
-                      <a class="profile-pic" href="#"> <img src="{% static 'plugins/images/users/varun.jpg' %}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{ request.user.first_name }} {{ request.user.last_name }} </b></a>
+                      <a class="profile-pic" href="#"> <img src="{% static 'plugins/images/users/varun.jpg' %}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{ request.user.first_name }} {{ request.user.last_name }}</b></a>
                     </li>
                     {% endif %}
                 </ul>
@@ -92,21 +93,28 @@
                 </div>
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
-                        <a href="index.html" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
+                        <a href="#" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
+                    </li>
+                     <li>
+                        <a href="{% url "billing" %}" class="waves-effect"><i class="fa fa-money fa-fw" aria-hidden="true"></i>Billing $ Payments</a>
+                    </li>
+                     <li >
+                        <a href="index.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>My Account</a>
+                    </li>
+                     <li >
+                        <a href="index.html" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Report Problem</a>
                     </li>
                     <li>
-                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
-                    </li>
-                    <li>
-                        <a href="{% url "logout" %}" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Logout</a>
+                        <a href="{% url "logout" %}" class="waves-effect"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
                     </li>
 
                 </ul>
 
             </div>
-            
+
         </div>
         {% endif %}
+
         <!-- ============================================================== -->
         <!-- End Left Sidebar -->
         <!-- ============================================================== -->
@@ -120,7 +128,8 @@
                         <h4 class="page-title">Dashboard</h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                          <ol class="breadcrumb">
-                            <li><a href="#">{{ customer.get_payGID }} PAYGO ID: 278012365</a></li>
+                            <li>PAYGO ID: {{ customer.payGID }}</li>
+                            <li>PAYMENT PLAN: {{ customer.paymentPlan }}</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -138,18 +147,18 @@
                                 <li>
                                     <div id="sparklinedash"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">20</span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">{{ noOfpayments }}</span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Ammount Paid</h3>
+                            <h3 class="box-title">Amount Paid</h3>
                             <ul class="list-inline two-part">
                                 <li>
                                     <div id="sparklinedash2"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">869</span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">{{ total|intcomma }}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -160,7 +169,7 @@
                                 <li>
                                     <div id="sparklinedash3"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">911</span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">{{ totaltokens }}</span></li>
                             </ul>
                         </div>
                     </div>

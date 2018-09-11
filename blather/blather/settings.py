@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'api',
-    'django_tables2'
+    'django_tables2',
+    'django.contrib.humanize'
 
 ]
 

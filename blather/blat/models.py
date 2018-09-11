@@ -46,6 +46,7 @@ class Product(models.Model):
     buyPrice = models.FloatField()
     sellPrice = models.FloatField()
     productDescription = models.TextField(null=True)
+    objects = models.Manager()
 
     def __str__(self):
         return self.payGID

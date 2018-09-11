@@ -21,7 +21,7 @@ class Products(admin.ModelAdmin):
     search_fields = ['payGID']
 
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'city', 'phone', 'payGID', 'country', 'username')
+    list_display = ('first_name', 'last_name', 'city', 'phone', 'payGID', 'country', 'username', 'paymentPlan')
     list_filter = ['city']
     search_fields = ['first_name']
 
@@ -31,7 +31,7 @@ class TokenAdmin(admin.ModelAdmin):
     search_fields = ['payGID']
 
 class CustomerPayments(admin.ModelAdmin):
-    list_display = ('customerName', 'payGID', 'paymentDate', 'amount', 'paymentType', 'activation_token')
+    list_display = ('customerName', 'payGID', 'paymentDate', 'amount', 'paymentType', 'activation_token', 'username')
     list_filter = ['payGID']
     search_fields = ['customerName']
 

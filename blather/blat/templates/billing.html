@@ -1,7 +1,8 @@
+
+<!DOCTYPE html>
 {% load static %}
 {% load render_table from django_tables2 %}
 {% load humanize %}
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -72,7 +73,7 @@
                     </li>
                     {% if request.user.is_authenticated %}
                     <li>
-                      <a class="profile-pic" href="#"> <img src="{% static 'plugins/images/users/varun.jpg' %}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{ request.user.first_name }} {{ request.user.last_name }}</b></a>
+                      <a class="profile-pic" href="#"> <img src="{{ user.profile.photo.url }}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{ request.user.first_name }} {{ request.user.last_name }}</b></a>
                     </li>
                     {% endif %}
                 </ul>
@@ -95,19 +96,19 @@
                 </div>
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
-                        <a href="{% url "dashboard" %}" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
+                        <a href="{% url 'dashboard' %}" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
                     </li>
                      <li>
                         <a href="#" class="waves-effect"><i class="fa fa-money fa-fw" aria-hidden="true"></i>Billing $ Payments</a>
                     </li>
                      <li >
-                        <a href="{% url "profile" %}" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>My Account</a>
+                        <a href="{% url 'profile' %}" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>My Account</a>
                     </li>
                      <li >
-                        <a href="index.html" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Report Problem</a>
+                        <a href="{% url 'comments' %}" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Report Problem</a>
                     </li>
                     <li>
-                        <a href="{% url "logout" %}" class="waves-effect"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
+                        <a href="{% url 'logout' %}" class="waves-effect"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
                     </li>
 
                 </ul>

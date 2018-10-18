@@ -7,6 +7,7 @@ from .models import Payment
 from .models import PaymentPlan
 from .models import ProductCategory
 from .models import Supplier
+from .models import profile
 from api.models import Bucketlist
 
 # Register your models here.
@@ -50,6 +51,8 @@ class ProductCatergories(admin.ModelAdmin):
 class BucketListing(admin.ModelAdmin):
     list_display = ('name', 'date_created', 'date_modified', 'owner')
 
+class profileAdmin(admin.ModelAdmin):
+    list_display = ['user', 'date_of_birth', 'photo']
 
 #admin.site.register(Blat, BlatAdmin)
 admin.site.register(Supplier, Suppliers)
@@ -60,3 +63,4 @@ admin.site.register(Tokens, TokenAdmin)
 admin.site.register(PaymentPlan, PayPlan)
 admin.site.register(Payment, CustomerPayments)
 admin.site.register(Bucketlist, BucketListing)
+admin.site.register(profile, profileAdmin)

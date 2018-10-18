@@ -1,80 +1,77 @@
-{% load static %}
-
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
-<head>
+  <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'plugins/images/favicon.png">
-    <title>Peak Solar system ! We lead others follow</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
-    <!-- Menu CSS -->
-    <link href="{% static 'plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css' %}" rel="stylesheet">
-    <!-- toast CSS -->
-    <link href="{% static 'plugins/bower_components/toast-master/css/jquery.toast.css' %}" rel="stylesheet">
-    <!-- morris CSS -->
-    <link href="{% static 'plugins/bower_components/morrisjs/morris.css' %}" rel="stylesheet">
-    <!-- chartist CSS -->
-    <link href="{% static 'plugins/bower_components/chartist-js/dist/chartist.min.css' %}" rel="stylesheet">
-    <link href="{% static 'plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css' %}" rel="stylesheet">
-    <!-- animation CSS -->
-    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <!-- color CSS -->
-    <link href="{% static 'css/colors/default.css' %}" id="theme" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-</head>
 
-<br><br><br><br><br><br><br><br>
-<body class="fix-header">
-<div class="container">
-    	<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<div class="panel panel-login">
+    <title>Peak Solar system ! We lead others follow - Login</title>
 
-					<div class="panel-body">
-						<div class="row">
-                            {% block content %}
-                            <h1>Login</h1>
-                            {% if form.errors %}
-                            <p> Your username and password didnt match. Please try Again.</p>
-                            {% else %}
-                            <p> Please use the following form to log-in :</p>
-                            {% endif %}
-							<div class="col-lg-12">
+    <!-- Bootstrap core CSS-->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-								<form id="login-form" action="." method="POST" role="form" style="display: block;">
-                                    {{ form.as_p }}
-                                    {% csrf_token %}
-									<div class="form-group">
-										<div class="row">
-											<div class="col-sm-6 col-sm-offset-3">
-												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
-											    <input type="hidden" name="next" id="next_tab" tabindex="5" class="form-control btn btn-login" value="{{ next }}" />
-                                            </div>
-										</div>
-									</div>
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
-								</form>
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin.css' %}" rel="stylesheet">
 
-							</div>
-                            {% endblock %}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  </head>
+
+  <body class="bg-dark">
+
+    <div class="container">
+      <div class="card card-login mx-auto mt-5">
+        <div class="card-header">Login</div>
+        <div class="card-body">
+          {% block main %}
+          <form method="POST" action="login/" name="LoginForm" role="form">
+             {% csrf_token %}
+             {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            {% endif %}
+            <div class="form-group">
+              <div class="form-label-group">
+                <input type="text" id="username" name="username" class="form-control" placeholder="User Name" required="required" autofocus="autofocus">
+                <label for="username">User Name</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-label-group">
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required">
+                <label for="password">Password</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="remember-me">
+                  Remember Password
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" >Login</button>
+          </form>
+          <div class="text-center">
+            <a class="d-block small mt-3" href="register.html">Register an Account</a>
+            <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+   {% endblock %}
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  </body>
 
 </html>

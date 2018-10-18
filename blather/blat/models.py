@@ -1,5 +1,7 @@
 from django.db import models
 from django_countries.fields import CountryField
+from django.contrib.auth.models import User
+from django.conf import settings
 
 # Create your models here.
 
@@ -29,7 +31,6 @@ class Supplier(models.Model):
 
     def __str__(self):
         return self.company_name
-
 
 class ProductCategory(models.Model):
     catergory_name = models.CharField(max_length=50)
@@ -72,6 +73,16 @@ class Customer(models.Model):
 
     def __str__(self):
         return u'%s %s' %(self.first_name, self.last_name)
+
+
+class profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    date_of_birth = models.DateField(blank=True, null=True)
+    photo = models.ImageField(upload_to='users/%Y/%m%d', blank=True)
+
+    def __str__(self):
+        return 'profile for user{}'.format(self.user.username)
+
 
 
 TOKEN_STATE = (

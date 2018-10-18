@@ -1,5 +1,6 @@
-{% load static %}
+
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
   <head>
@@ -27,11 +28,23 @@
 
     <div class="container">
       <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Login</div>
+        <div class="card-header"><b>Login<b></b></div>
         <div class="card-body">
+
           <form id="login-form" action="." method="POST" role="form">
             <div class="form-group">
-               {{ form.as_p }}
+               <div class="form-group">
+              <div class="form-label-group">
+                <input type="text" id="username" name="username" class="form-control" placeholder="User Name" required="required" autofocus="autofocus">
+                <label for="username">User Name</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-label-group">
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required">
+                <label for="password">Password</label>
+              </div>
+            </div>
                {% csrf_token %}
             </div>
 
@@ -47,8 +60,8 @@
 			<input type="hidden" name="next" id="next_tab" tabindex="5" class="form-control btn btn-login" value="{{ next }}" />
           </form>
           <div class="text-center">
-            <a class="d-block small mt-3" href="register.html">Register an Account</a>
-            <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+            <a class="d-block small mt-3" href='{% url "register" %}'>Register an Account</a>
+            <a class="d-block small" href='{% url "password_reset" %}'>Forgot Password?</a>
           </div>
         </div>
       </div>

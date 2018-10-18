@@ -71,7 +71,7 @@
                     </li>
 
                     <li>
-                      <a class="profile-pic" href="#"> <img src="{% static 'plugins/images/users/varun.jpg' %}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{ request.user.first_name }} {{ request.user.last_name }}</b></a>
+                      <a class="profile-pic" href="#"> <img src="{{ user.profile.photo.url }}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{ request.user.first_name }} {{ request.user.last_name }}</b></a>
                     </li>
 
                 </ul>
@@ -134,15 +134,23 @@
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
                         <div class="white-box">
-                            <div class="user-bg"> <img width="100%" alt="user" src="{% static 'plugins/images/large/img1.jpg' %}">
+                            <div class="user-bg"> <img width="100%" alt="user" src="{{ user.profile.photo.url }}">
                                 <div class="overlay-box">
                                     <div class="user-content">
-                                        <a href="javascript:void(0)"><img src="{% static 'plugins/images/users/genu.jpg' %}" class="thumb-lg img-circle" alt="img"></a>
+                                        <a href="javascript:void(0)"><img src="{{ user.profile.photo.url }}" class="thumb-lg img-circle" alt="img"></a>
                                         <h4 class="text-white">User Name</h4>
                                         <h5 class="text-white">{{ request.user.username }}</h5> </div>
                                 </div>
                             </div>
+                            <div class="user-btm-box">
+                                <div class="col-md-4 col-sm-4 text-center">
+                                    <p class="text-purple"><i class="ti-facebook"></i></p>
+                                    <h1><i class="fa fa-unlock-alt fa-fw" aria-hidden="true"></i></h1> <a href='{% url "password_change" %}'>Change password</a></div>
+                                <div class="col-md-4 col-sm-4 text-center">
+                                    <p class="text-blue"><i class="ti-twitter"></i></p>
+                                    <h1><i class="fa  fa-edit fa-fw" aria-hidden="true"></i></h1> <a href='{% url "edit" %}'>Edit Profile</a></div>
 
+                            </div>
                         </div>
                     </div>
 
@@ -163,6 +171,7 @@
                                     <label class="col-md-12">Password</label>
                                     <div class="col-md-12">
                                         <input type="password" value="password" class="form-control form-control-line"> *********** </div>
+
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-12">Phone No</label>
@@ -181,7 +190,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <button class="btn btn-success">Update Profile</button>
+                                        <button class="btn btn-success"><i class="fa fa-unlock-alt fa-fw" aria-hidden="true"></i>Update Profile</button>
                                     </div>
                                 </div>
                             </form>
